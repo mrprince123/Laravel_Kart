@@ -15,7 +15,9 @@
         <div class="flex gap-2 w-full mt-auto">
             <a href=""><button
                     class="bg-slate-400 p-1 font-medium text-black">Buy Now</button></a>
-            <a href=""><button class="bg-black p-1 font-medium text-white">Add To Cart</button></a>
+            {{-- <a href=""><button class="bg-black p-1 font-medium text-white">Add To Cart</button></a> --}}
+            <a href="{{route('cart.add', ['productId'=>$product->product_id, 'userId' => Auth::id()]) }}"><button class="bg-black p-1 font-medium text-white">Add To Cart</button></a>
+        
         </div>
     </div>
 @endsection

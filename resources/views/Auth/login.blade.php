@@ -37,8 +37,8 @@
 
             <form action="{{ route('login') }}" method="post" class="mt-2 gap-4 flex flex-col p-2">
                 @csrf
-                <input class="p-3  bg-slate-200" type="email" name="email" placeholder="Email">
-                <input class="p-3  bg-slate-200" type="password" name="password" placeholder="Password">
+                <input class="p-3  bg-slate-200" type="email" name="email" placeholder="Email" value={{ old('email') }}>
+                <input class="p-3  bg-slate-200" type="password" name="password" placeholder="Password" value={{ old('password') }}>
                 <input class="p-3  bg-black text-white font-medium" type="submit" value="login">
             </form>
 

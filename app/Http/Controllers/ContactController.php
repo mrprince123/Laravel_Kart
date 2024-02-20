@@ -39,6 +39,6 @@ class ContactController extends Controller
 
         $contacts->save();
 
-        return "Contact Created";
+        return redirect('success');
     }
 }

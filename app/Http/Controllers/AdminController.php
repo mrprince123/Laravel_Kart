@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\carts;
 use App\Models\Contact;
 use App\Models\orders;
 use App\Models\products;
@@ -81,6 +82,13 @@ class AdminController extends Controller
         $orders = orders::all();
         $data = compact('orders');
         return view('Admin.order')->with($data);
+    }
+
+    public function carts()
+    {
+        $carts = carts::all();
+        $data = compact('carts');
+        return view('Admin.cart')->with($data);
     }
 
     /**

@@ -20,6 +20,7 @@
             @error('description')
                 <label class="text-red-500">{{ $message }}</label>
             @enderror
+
             <input class="p-3" type="number" name="price" placeholder="Product Price" value={{ old('price') }}>
             @error('price')
                 <label class="text-red-500">{{ $message }}</label>

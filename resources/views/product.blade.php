@@ -21,7 +21,7 @@
                 <div class="flex gap-2 w-full mt-auto">
                     <a href="{{ url('/product') }}/{{ $value->product_id }}"><button
                             class="bg-slate-400 p-1 font-medium text-black">View Full</button></a>
-                    <a href=""><button class="bg-black p-1 font-medium text-white">Add To Cart</button></a>
+                    <a href="{{route('cart.add', ['productId'=>$value->product_id, 'userId' => Auth::id()]) }}"><button class="bg-black p-1 font-medium text-white">Add To Cart</button></a>
                 </div>
             </div>
         @endforeach
