@@ -8,7 +8,8 @@
     {{-- <h1>Full Product Details</h1> --}}
 
     <div class="w-1/2 m-auto bg-slate-200 p-2 mt-10 mb-10">
-        <img src="{{ $product->image }}" alt="">
+        <img src="{{ asset('storage/'.$product->image) }}" alt="">
+
         <h1>{{ $product->name }}</h1>
         <p>Description: {{ $product->description }}</p>
         <p>Price: ${{ $product->price }}</p>

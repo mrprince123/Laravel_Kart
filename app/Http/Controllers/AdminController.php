@@ -40,7 +40,7 @@ class AdminController extends Controller
                 'name' => 'required',
                 'description' => 'required',
                 'price' => 'required',
-                'image' => 'required'
+                'image' => 'required|image|mimes:jpeg,png,jpg',
             ]
         );
 
@@ -48,11 +48,14 @@ class AdminController extends Controller
         // print_r($request->all());
         // echo "</pre>";
 
+        // Store the Image in the 
+        $imagePath = $request->file('image')->store('images', 'public');
+
         $products = new products;
         $products->name = $request['name'];
         $products->description = $request['description'];
         $products->price = $request['price'];
-        $products->image = $request['image'];
+        $products->image = $imagePath;
         $products->save();
 
         echo "Product Created";

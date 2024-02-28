@@ -9,7 +9,7 @@
 
     <div class="w-2/3 m-auto mt-20 bg-blue-300">
         <h1 class="text-2xl font-medium text-center">Create Product</h1>
-        <form action="{{ url('/') }}/admin/createProduct" method="post" class="flex flex-col p-2 gap-2">
+        <form action="{{ url('/') }}/admin/createProduct" enctype="multipart/form-data" method="post" class="flex flex-col p-2 gap-2">
             @csrf
             <input class="p-3" type="text" name="name" placeholder="Product Name" value={{ old('name') }}>
             @error('name')
@@ -25,7 +25,7 @@
             @error('price')
                 <label class="text-red-500">{{ $message }}</label>
             @enderror
-            <input class="p-3" type="text" name="image" placeholder="Product Image Url" value={{ old('image') }}>
+            <input class="p-3" type="file" multiple name="image" placeholder="Product Image Url" value={{ old('image') }}>
             @error('image')
                 <label class="text-red-500">{{ $message }}</label>
             @enderror
