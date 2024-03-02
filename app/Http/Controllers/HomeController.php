@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\products;
+use App\Models\product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function home()
     {
-        $products = products::all();
+        $products = product::all();
         $data = compact('products');
         return view('home')->with($data);
     }

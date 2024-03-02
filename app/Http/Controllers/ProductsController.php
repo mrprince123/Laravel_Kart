@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\products;
+use App\Models\product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class ProductController extends Controller
      */
     public function view()
     {
-        $products = products::all();
+        $products = product::all();
         $data = compact('products');
-        return view('product')->with($data);
+        return view('products')->with($data);
     }
 
     /**
@@ -48,8 +48,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = products::findOrFail($id);
-        return view('fullProduct', compact('product'));
+        $products = product::findOrFail($id);
+        return view('fullProduct', compact('products'));
     }
 
     /**

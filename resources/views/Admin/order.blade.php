@@ -7,8 +7,9 @@
 @section('main-section')
     {{-- <h1>Admin Order page</h1> --}}
 
-    <table class="bg-blue-200 m-4">
-        <thead>
+    <table class="bg-slate-200 w-full">
+        <thead class="bg-green-500 rounded-2xl text-white">
+        
             <tr>
                 <th class="border p-2 m-2 border-black">Order ID</th>
                 <th class="border p-2 m-2 border-black">Total Amount</th>
@@ -22,7 +23,7 @@
 
             @foreach ($orders as $value)
                 <tr>
-                    <td class="border p-2 m-2 border-black" >{{ $value->order_id }}</td>
+                    <td class="border font-medium p-2 m-2 border-black" >{{ $value->id }}</td>
                     <td class="border p-2 m-2 border-black" >{{ $value->total_amount }}</td>
                     <td class="border p-2 m-2 border-black" >{{ $value->status }}</td>
                     <td class="border p-2 m-2 border-black" >{{ $value->payment_status }}</td>

@@ -8,7 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 
 //Auth Controller
@@ -24,8 +24,8 @@ Route::get('/success', [HomeController::class, 'success'])->name('successful');
 Route::get('/about', [AboutController::class, 'view'])->name('about');
 
 // This is for the Product 
-Route::get('/product', [ProductController::class, 'view']);
-Route::get('/product/{id}', [ProductController::class, 'show']);
+Route::get('/product', [ProductsController::class, 'view']);
+Route::get('/product/{id}', [ProductsController::class, 'show']);
 
 // This is for the Contact
 Route::get('/contact', [ContactController::class, 'view']);
@@ -46,6 +46,7 @@ Route::get('/checkout', [CheckoutController::class, 'view']);
 Route::group(['middleware' => 'auth'], function () {
     // Admin Routes
     Route::get('/admin', [AdminController::class, 'view'])->name('admin');
+    Route::get('/admin/home', [AdminController::class, 'index'])->name('home');
     Route::get('/admin/product', [AdminController::class, 'product'])->name('product');
     Route::get('/admin/createProductView', [AdminController::class, 'createProductView']);
     Route::post('/admin/createProduct', [AdminController::class, 'createProduct']);

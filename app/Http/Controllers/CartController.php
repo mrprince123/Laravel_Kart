@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\carts;
-use App\Models\products;
+use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +28,7 @@ class CartController extends Controller
         }
 
         // Find the product with the given product ID
-        $product = products::find($productId);
+        $product = product::find($productId);
 
         // Check if the product exists
         if (!$product) {
@@ -56,7 +56,7 @@ class CartController extends Controller
         $userId = Auth::id();
 
         // Find the cart item belonging to the authenticated user
-        $cartItem = carts::where('cart_id', $cartId)->where('user_id', $userId)->first();
+        $cartItem = carts::where('id', $cartId)->where('user_id', $userId)->first();
 
         // Check if the cart item exists
         if (!$cartItem) {

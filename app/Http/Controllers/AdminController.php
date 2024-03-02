@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\carts;
 use App\Models\Contact;
 use App\Models\orders;
-use App\Models\products;
+use App\Models\product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -21,9 +21,22 @@ class AdminController extends Controller
         return view('Admin.admin');
     }
 
+
+    public function index()
+    {
+        $products = product::all();
+        $contacts = Contact::all();
+        $users = User::all();
+        $orders = orders::all();
+        $carts = carts::all();
+
+        return view('Admin.home', compact('products', 'contacts', 'users', 'orders', 'carts'));
+    }
+
+
     public function product()
     {
-        $products = products::all();
+        $products = product::all();
         $data = compact('products');
         return view('Admin.product')->with($data);
     }
@@ -40,7 +53,8 @@ class AdminController extends Controller
                 'name' => 'required',
                 'description' => 'required',
                 'price' => 'required',
-                'image' => 'required|image|mimes:jpeg,png,jpg',
+                'category' => 'required|exists:category,id',
+                'images' => 'required|image|mimes:jpeg,png,jpg',
             ]
         );
 
@@ -49,13 +63,14 @@ class AdminController extends Controller
         // echo "</pre>";
 
         // Store the Image in the 
-        $imagePath = $request->file('image')->store('images', 'public');
+        $imagePath = $request->file('images')->store('images', 'public');
 
-        $products = new products;
+        $products = new product();
         $products->name = $request['name'];
         $products->description = $request['description'];
         $products->price = $request['price'];
-        $products->image = $imagePath;
+        $products->cat_id = $request->input('category');
+        $products->images = $imagePath;
         $products->save();
 
         echo "Product Created";

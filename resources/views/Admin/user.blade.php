@@ -7,8 +7,8 @@
 @section('main-section')
     {{-- <h1>Admin Users page</h1> --}}
 
-    <table  class="bg-blue-200 m-4">
-        <thead>
+    <table  class="bg-slate-200 w-full">
+        <thead class="bg-green-500 rounded-2xl text-white">
             <tr>
                 <th class="border p-2 m-2 border-black">User ID</th>
                 <th class="border p-2 m-2 border-black">Name</th>
@@ -21,7 +21,7 @@
 
             @foreach ($users as $value)
                 <tr>
-                    <td class="border p-2 m-2 border-black">{{ $value->id }}</td>
+                    <td class="border font-medium p-2 m-2 border-black">{{ $value->id }}</td>
                     <td class="border p-2 m-2 border-black">{{ $value->name }}</td>
                     <td class="border p-2 m-2 border-black">{{ $value->email }}</td>
                     <td class="border p-2 m-2 border-black">{{ $value->password }}</td>

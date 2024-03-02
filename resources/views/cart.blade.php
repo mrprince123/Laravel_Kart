@@ -12,14 +12,14 @@
         @foreach ($carts as $value)
             <div class="bg-slate-200 w-1/2 m-4">
                 @php
-                    $product = App\Models\products::find($value->product_id);
+                    $product = App\Models\product::find($value->product_id);
                 @endphp
 
 
                 @if ($product)
                     <div class="flex p-2 gap-2">
                         {{-- <img class="w-1/3" src="{{ $product->image }}" alt=""> --}}
-                        <img class="w-1/3" src="{{ asset('storage/' . $product->image) }}" alt="">
+                        <img class="w-1/3" src="{{ asset('storage/' . $product->images) }}" alt="">
 
                         <div>
                             <h3 class="font-medium text-black text-xl">{{ $product->name }}</h3>

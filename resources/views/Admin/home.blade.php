@@ -1,15 +1,14 @@
 @extends('Admin.admin')
 
 @push('title')
-    <title>Contact</title>
+    <title>Admin Home</title>
 @endpush
 
 @section('main-section')
-    {{-- <h1>Admin Contact page</h1> --}}
+    {{-- <h1>Admin Home page</h1> --}}
 
-    <table class="bg-slate-200 w-full">
+    {{-- <table class="bg-slate-200 w-full">
         <thead class="bg-green-500 rounded-2xl text-white">
-
             <tr>
                 <th class="border p-2 m-2 border-black">Contact ID</th>
                 <th class="border p-2 m-2 border-black">Name</th>
@@ -40,5 +39,42 @@
             @endforeach
 
         </tbody>
-    </table>
+    </table> --}}
+
+    <div class="flex">
+
+        <div class="bg-blue-500 m-2 text-center text-white font-bold text-2xl rounded-xl p-20 w-1/4">
+            @php
+                $totalCount = count($products);
+            @endphp
+
+            Total count of Products: {{ $totalCount }}
+
+        </div>
+
+        <div class="bg-red-500 m-2 text-center text-white font-bold text-2xl rounded-xl p-20 w-1/4">
+            @php
+                $totalCount = count($orders);
+            @endphp
+
+            Total count of orders: {{ $totalCount }}
+        </div>
+
+        <div class="bg-green-500 m-2 text-center text-white font-bold text-2xl rounded-xl p-20 w-1/4">
+            @php
+                $totalCount = count($carts);
+            @endphp
+
+            Total count of Carts: {{ $totalCount }}
+        </div>
+
+        <div class="bg-yellow-500 m-2 text-center text-white font-bold text-2xl rounded-xl p-20 w-1/4">
+            @php
+                $totalCount = count($users);
+            @endphp
+
+            Total count of Users: {{ $totalCount }}
+        </div>
+
+    </div>
 @endsection

@@ -14,23 +14,33 @@
     @stack('title')
 </head>
 
-<body class="bg-gray-100">
+<body>
     <div class="flex h-screen">
+
         <!-- Sidebar -->
-        <div class="sidebar bg-black text-white">
+        <div class="sidebar border rounded-2xl m-2 bg-black text-white">
             <div class="p-4">
-                <h1 class="text-xl font-bold">E-Commerce Admin</h1>
+                <h1 class="text-xl font-bold">Laravel Kart Admin</h1>
                 <ul class="mt-4">
                     {{-- <li><a href="{{url('/admin')}}" class="block py-2 px-4 hover:bg-gray-700">Admin</a></li> --}}
-                    <li><a href="{{ url('/admin/product') }}" class="block py-2 px-4 hover:bg-gray-700">Product</a></li>
-                    <li><a href="{{ url('/admin/createProductView') }}" class="block py-2 px-4 hover:bg-gray-700">Create
+                    <li><a href="{{ url('/admin/home') }}"
+                        class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Home</a></li>
+                    <li><a href="{{ url('/admin/product') }}"
+                            class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Product</a></li>
+                    <li><a href="{{ url('/admin/createProductView') }}"
+                            class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Create
                             Products</a></li>
-                    <li><a href="{{ url('/admin/contact') }}" class="block py-2 px-4 hover:bg-gray-700">Contact</a></li>
-                    <li><a href="{{ url('/admin/users') }}" class="block py-2 px-4 hover:bg-gray-700">Users</a></li>
-                    <li><a href="{{ url('/admin/order') }}" class="block py-2 px-4 hover:bg-gray-700">Orders</a></li>
-                    <li><a href="{{ url('/admin/carts') }}" class="block py-2 px-4 hover:bg-gray-700">Carts</a></li>
+                    <li><a href="{{ url('/admin/contact') }}"
+                            class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Contact</a></li>
+                    <li><a href="{{ url('/admin/users') }}"
+                            class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Users</a></li>
+                    <li><a href="{{ url('/admin/order') }}"
+                            class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Orders</a></li>
+                    <li><a href="{{ url('/admin/carts') }}"
+                            class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Carts</a></li>
 
-                    <li><a href="{{ url('/') }}" class="block py-2 px-4 hover:bg-gray-700 font-medium">Navigate To
+                    <li><a href="{{ url('/') }}"
+                            class="block py-2 px-4 hover:bg-gray-700 font-medium rounded-lg">Navigate To
                             Home</a>
                     </li>
                 </ul>
@@ -38,7 +48,7 @@
         </div>
 
         <!-- Main Content -->
-        <div class="w-full">
+        <div class="rounded-2xl bg-gray-200 h-fit m-2 w-full">
             @yield('main-section')
         </div>
 
