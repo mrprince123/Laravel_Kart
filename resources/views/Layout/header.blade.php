@@ -12,7 +12,7 @@
 
 <body>
 
-    <div class="flex bg-slate-100 p-4 justify-between items-center ">
+    <div class="flex bg-slate-200 p-4 justify-between items-center ">
         <a href="{{ url('/') }}">
             <h1 class="font-medium text-2xl">Laravel <span class="font-bold">Kart</h1>
         </a>

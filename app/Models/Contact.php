@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
     use HasFactory;
+
+    public function getDobAttribute($value){
+        return date("d-M-Y", strtotime($value));
+    }
 }

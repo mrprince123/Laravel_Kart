@@ -62,6 +62,9 @@ class AdminController extends Controller
         // print_r($request->all());
         // echo "</pre>";
 
+        // pre($request->all());
+        // die;
+
         // Store the Image in the 
         $imagePath = $request->file('images')->store('images', 'public');
 
@@ -80,6 +83,17 @@ class AdminController extends Controller
         return redirect('/admin/product');
     }
 
+    // For Deleting the Products
+    public function deleteProduct($id)
+    {
+        $products = product::find($id);
+        if (!is_null($products)) {
+            $products->delete();
+        }
+        return redirect('/admin/product');
+    }
+
+    // For Viewing all the Contacts
     public function contact()
     {
         $contacts = Contact::all();
@@ -87,12 +101,35 @@ class AdminController extends Controller
         return view('Admin.contact')->with($data);
     }
 
+    // for Delete Contact 
+    public function deleteContact($id)
+    {
+        $contacts = Contact::find($id);
+        if (!is_null($contacts)) {
+            $contacts->delete();
+        }
+        return redirect('/admin/contact');
+    }
+
+    // Show all the Users
     public function users()
     {
         $users = User::all();
         $data = compact('users');
         return view('Admin.user')->with($data);
     }
+
+    // Delete the User
+    public function deleteUser($id)
+    {
+        $users = User::find($id);
+        if (!is_null($users)) {
+            $users->delete();
+        }
+
+        return redirect('/admin/users');
+    }
+
 
 
     public function orders()
@@ -108,70 +145,7 @@ class AdminController extends Controller
         $data = compact('carts');
         return view('Admin.cart')->with($data);
     }
+    
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    
 }

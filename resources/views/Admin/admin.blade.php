@@ -23,8 +23,8 @@
                 <h1 class="text-xl font-bold">Laravel Kart Admin</h1>
                 <ul class="mt-4">
                     {{-- <li><a href="{{url('/admin')}}" class="block py-2 px-4 hover:bg-gray-700">Admin</a></li> --}}
-                    <li><a href="{{ url('/admin/home') }}"
-                        class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Home</a></li>
+                    <li><a href="{{ url('/admin') }}" class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Home</a>
+                    </li>
                     <li><a href="{{ url('/admin/product') }}"
                             class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Product</a></li>
                     <li><a href="{{ url('/admin/createProductView') }}"
@@ -36,6 +36,8 @@
                             class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Users</a></li>
                     <li><a href="{{ url('/admin/order') }}"
                             class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Orders</a></li>
+                            <li><a href="{{ url('/admin/category') }}"
+                                class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Category</a></li>
                     <li><a href="{{ url('/admin/carts') }}"
                             class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Carts</a></li>
 
@@ -48,10 +50,9 @@
         </div>
 
         <!-- Main Content -->
-        <div class="rounded-2xl bg-gray-200 h-fit m-2 w-full">
+        <div class="rounded-2xl bg-gray-200 m-2 flex items-start w-full">
             @yield('main-section')
         </div>
-
 
     </div>
 </body>
