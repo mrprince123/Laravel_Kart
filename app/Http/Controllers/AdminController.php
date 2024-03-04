@@ -58,6 +58,7 @@ class AdminController extends Controller
             ]
         );
 
+        // Here I have use the helper function 
         // echo "<pre>";
         // print_r($request->all());
         // echo "</pre>";

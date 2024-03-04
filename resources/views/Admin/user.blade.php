@@ -7,7 +7,7 @@
 @section('main-section')
     {{-- <h1>Admin Users page</h1> --}}
 
-    <table class="bg-white p-2 m-2 w-full rounded-2xl">
+    <table class="bg-white p-2 m-2 w-full text-center rounded-2xl">
         <thead class="rounded-2xl text-black">
             <tr>
                 <th class=" p-3 m-2 border-black">User ID</th>

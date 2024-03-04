@@ -19,3 +19,6 @@ if (!function_exists('get_formatted_date')) {
         return $formattedDate;
     }
 }
+
+
+// I have used only two helper function 

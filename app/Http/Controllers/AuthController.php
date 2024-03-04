@@ -17,6 +17,7 @@ class AuthController extends Controller
         return view('Auth.login');
     }
 
+    // Login Logic 
     public function login(Request $request)
     {
         // dd($request->all());
@@ -38,6 +39,7 @@ class AuthController extends Controller
         return view('Auth.register');
     }
 
+    // Register Logic 
     public function register(Request $request)
     {
         $request->validate([

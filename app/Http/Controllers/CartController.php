@@ -9,13 +9,18 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    // Send the Data of Cart for each users (cart will be different for each user.)
     public function view()
     {
-        $carts = carts::all();
+        $user = auth()->user();
+        $carts = $user->carts;
         $data = compact('carts');
         return view('cart')->with($data);
     }
 
+
+
+    // Add Product to cart
     public function addProduct(Request $request, $productId)
     {
         // Get the user ID of the authenticated user

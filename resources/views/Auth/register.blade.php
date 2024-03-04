@@ -27,8 +27,8 @@
 
     <div class="bg-slate-200 flex">
 
-        <div class="bg-white rounded-xl text-center p-2 w-1/4 m-auto">
-            <h1 class="text-2xl font-bold text-center">Register</h1>
+        <div class="bg-white rounded-xl drop-shadow-2xl text-center p-2 w-1/4 m-auto">
+            <h1 class="text-3xl font-bold text-center">Register</h1>
             @if ($errors->any())
                 <div class="w-ful text-centerl">
                     <label for="" class="text-red-500 font-medium">{{ $errors->first() }}</label>
@@ -37,15 +37,15 @@
 
             <form action="{{ url('/register') }}" method="post" class="mt-2 gap-4 flex flex-col p-2">
                 @csrf
-                <input class="p-3  bg-slate-200" type="text" name="name" placeholder="Name"
+                <input class="p-3 rounded-2xl  bg-slate-200" type="text" name="name" placeholder="Name"
                     value={{ old('name') }}>
-                <input class="p-3  bg-slate-200" type="email" name="email" placeholder="Email"
+                <input class="p-3 rounded-2xl bg-slate-200" type="email" name="email" placeholder="Email"
                     value={{ old('email') }}>
-                <input class="p-3  bg-slate-200" type="password" name="password" placeholder="Password"
+                <input class="p-3 rounded-2xl bg-slate-200" type="password" name="password" placeholder="Password"
                     value={{ old('password') }}>
-                <input class="p-3  bg-slate-200" type="password" name="cpassword" placeholder="Confirm Password"
-                    value={{ old('cpassword') }}>
-                <input class="p-3  bg-black text-white font-medium" type="submit" value="register">
+                <input class="p-3 rounded-2xl bg-slate-200" type="password" name="cpassword"
+                    placeholder="Confirm Password" value={{ old('cpassword') }}>
+                <input class="p-3 rounded-2xl bg-black text-white font-medium" type="submit" value="register">
             </form>
             <p class="text-slate-400">or</p>
 

@@ -36,6 +36,7 @@ return [
             'throw' => false,
         ],
 
+        // Used This config to store the image direct to this directory
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

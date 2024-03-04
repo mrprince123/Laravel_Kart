@@ -41,6 +41,7 @@ Route::get('/profile', [ProfileController::class, 'view']);
 
 // This is for the Checkout Page 
 Route::get('/checkout', [CheckoutController::class, 'view']);
+// Route::get('/checkout', [CheckoutController::class, '']);
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -54,8 +55,6 @@ Route::group(['middleware' => 'auth'], function () {
     // Admin Users Routes
     Route::get('/admin/users', [AdminController::class, 'users'])->name('users');
     Route::get('/admin/deleteUsers/{id}', [AdminController::class, 'deleteUser'])->name('deleteUsers');
-
-
 
     // Admin Contact Routes
     Route::get('/admin/contact', [AdminController::class, 'contact'])->name('contact');

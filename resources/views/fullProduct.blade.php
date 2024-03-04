@@ -7,11 +7,12 @@
 @section('main-section')
     {{-- <h1>Full Product Details</h1> --}}
 
-    <div class="bg-slate-100 pt-5 pb-20">
+    <div class="bg-slate-100 pt-20 pb-20">
 
-        <div class="w-2/3 flex m-auto bg-white gap-4 p-4">
+        <div class="w-2/3 flex m-auto drop-shadow-2xl rounded-2xl bg-white gap-4 p-4">
+           
             <div class="w-2/5">
-                <img src="{{ asset('storage/' . $products->images) }}" alt="">
+                <img class="rounded-2xl" src="{{ asset('storage/' . $products->images) }}" alt="">
 
                 <div class="flex gap-2 mt-5 w-full">
                     <a href="" class="w-1/2"><button class="bg-slate-400 p-3 w-full font-medium text-black">Buy
@@ -67,13 +68,75 @@
                             beyond. Yet, electronic waste challenges sustainability.</p>
                     </div>
                     <div class="flex gap-3 w-full mt-10">
-                        <p class="w-2/3 text-justify">Electronics permeate modern life, powering devices from smartphones to
-                            medical equipment. Leveraging
-                            electrons, they process, transmit, and store information, driving progress across industries.
-                            Advancements like AI and IoT redefine possibilities, promising breakthroughs in healthcare and
-                            beyond. Yet, electronic waste challenges sustainability. </p>
-                        <img class="w-1/3 object-cover"
-                            src="https://cdn.pixabay.com/photo/2018/01/27/18/45/wallkman-3111922_1280.jpg" alt="">
+
+                        @switch($products->cat_id)
+                            @case(1)
+                                <p class="w-2/3 text-justify">Electronics permeate modern life, powering devices from smartphones to
+                                    medical equipment. Leveraging
+                                    electrons, they process, transmit, and store information, driving progress across industries.
+                                    Advancements like AI and IoT redefine possibilities, promising breakthroughs in healthcare and
+                                    beyond. Yet, electronic waste challenges sustainability. </p>
+                                <img class="w-1/3 object-cover"
+                                    src="https://cdn.pixabay.com/photo/2018/01/27/18/45/wallkman-3111922_1280.jpg" alt="">
+                            @break
+
+                            @case(2)
+                                <p class="w-2/3 text-justify">The world of clothing is a diverse landscape, encompassing various
+                                    styles, materials, and
+                                    functions. From haute couture to everyday wear, clothes reflect cultural norms, personal
+                                    expression, and practical needs. Fashion trends come and go, but the timeless necessity of
+                                    clothing remains, shaping identities and bridging societal divides through fabric and design.
+                                </p>
+                                <img class="w-1/3 object-cover"
+                                    src="https://plus.unsplash.com/premium_photo-1673481600920-72fa9fc062cc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="">
+                            @break
+
+                            @case(3)
+                                <p class="w-2/3 text-justify">Food, a cornerstone of human existence, spans cultures and traditions,
+                                    offering sustenance, pleasure, and communal bonding. From exotic delicacies to comforting
+                                    staples, it caters to diverse tastes and nutritional needs. Culinary innovation continually
+                                    evolves, blending tradition with modernity, creating an endless array of flavors and experiences
+                                    to tantalize the senses. </p>
+                                <img class="w-1/3 object-cover"
+                                    src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="">
+                            @break;
+                            @case(4)
+                                <p class="w-2/3 text-justify">Mobile technology revolutionizes communication, entertainment, and
+                                    productivity, shrinking the world into a palm-sized device. Smartphones integrate apps, internet
+                                    access, and powerful hardware, shaping daily routines and connecting billions globally. From
+                                    social media to gaming, mobile devices redefine convenience, accessibility, and the very essence
+                                    of modern living in an interconnected digital age.</p>
+                                <img class="w-1/3 object-cover"
+                                    src="https://images.unsplash.com/photo-1567581935884-3349723552ca?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="">
+                            @break;
+                            @case(5)
+                                <p class="w-2/3 text-justify">
+                                    Stationery, an essential tool for organization and expression, ranges from sleek pens to
+                                    decorative paper. Whether jotting down notes or crafting heartfelt letters, it bridges the gap
+                                    between digital and analog worlds. From classic designs to modern innovations, stationery
+                                    continues to inspire creativity and elevate the art of communication in everyday life. </p>
+                                <img class="w-1/3 object-cover"
+                                    src="https://images.unsplash.com/photo-1568871391149-449702439177?q=80&w=2116&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="">
+                            @break;
+                            @case(6)
+                                <p class="w-2/3 text-justify">The "others" category encompasses a vast array of diverse topics and
+                                    interests that defy easy classification. From esoteric hobbies to niche communities, it
+                                    celebrates individuality and curiosity. This category serves as a melting pot of unique
+                                    passions, fostering exploration, connection, and the celebration of the wonderfully
+                                    unconventional aspects of human existence.</p>
+                                <img class="w-1/3 object-cover"
+                                    src="https://images.unsplash.com/photo-1500995617113-cf789362a3e1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="">
+                            @break;
+
+                            @default
+                        @endswitch
+
+
 
                     </div>
                 </div>

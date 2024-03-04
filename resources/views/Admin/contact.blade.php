@@ -41,7 +41,9 @@
                         <a href="{{ route('contactDelete', ['id' => $value->id]) }}">
 
                             <button class="bg-red-500 rounded-lg text-white font-bold p-2">Delete</button>
-
+                            <a href="mailto:{{ $value->email }}">
+                                <button class="bg-blue-500 rounded-lg text-white font-bold p-2">Mail</button>
+                            </a>
 
                         </a>
                     </td>
