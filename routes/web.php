@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
@@ -30,9 +31,9 @@ Route::get('/product/{id}', [ProductsController::class, 'show']);
 // This is for the Contact
 Route::get('/contact', [ContactController::class, 'view']);
 
-
 // This is for the Cart
 Route::get('/cart', [CartController::class, 'view'])->name('cart.index');
+Route::put('/cart/{cartItemId}', [CartController::class, 'quantityUpdate'])->name('cart.update');
 Route::get('/cart/add/{productId}', [CartController::class, 'addProduct'])->name('cart.add');
 Route::delete('/cart/{cartId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
@@ -41,12 +42,27 @@ Route::get('/profile', [ProfileController::class, 'view']);
 
 // This is for the Checkout Page 
 Route::get('/checkout', [CheckoutController::class, 'view']);
-// Route::get('/checkout', [CheckoutController::class, '']);
+Route::post('/checkout/final', [CheckoutController::class, 'finalCheckout'])->name('checkout.final');
+Route::get('/orders', [CheckoutController::class,'index']);
+Route::get('/orders/items', [CheckoutController::class, 'showAllOrderItem']);
+
+// This is for the Address Management Route
+Route::get('/address/view', [AddressController::class, 'index']);
+Route::get('/address/user', [AddressController::class, 'showUserAddress'])->name('user.address');
+Route::post('/address/create', [AddressController::class, 'create']);
+Route::get('/address/delete/{id}', [AddressController::class, 'deleteAddress']);
+
+// Admin Login and Register
+Route::get('/admin/login', [AdminController::class, 'showAdminLogin'])->name('showAdminLogin');
+Route::get('/admin/register', [AdminController::class, 'showAdminRegister'])->name('showAdminRegister');
+Route::post('/admin/login', [AdminController::class, 'adminLogin'])->name('adminLogin');
+Route::post('/admin/register', [AdminController::class, 'adminRegister'])->name('adminRegister');
+Route::get('/admin/logout', [AdminController::class, 'logoutAdmin'])->name('adminLogout');
 
 
-Route::group(['middleware' => 'auth'], function () {
+// Admin Route after Admin Login
+Route::middleware(['admin.auth'])->group(function () {
     // Admin Routes
-    // Route::get('/admin', [AdminController::class, 'view'])->name('admin');
     Route::get('/admin', [AdminController::class, 'index'])->name('home');
     Route::get('/admin/product', [AdminController::class, 'product'])->name('product');
     Route::get('/admin/createProductView', [AdminController::class, 'createProductView']);
@@ -62,6 +78,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Admin Orders Routes
     Route::get('/admin/order', [AdminController::class, 'orders'])->name('order');
+    Route::get('/admin/ordersItem', [AdminController::class, 'orderItems']);
 
     // Admin Product Routes
     Route::post('/admin/product', [AdminController::class, 'createProduct']);
@@ -69,7 +86,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Admin Carts Routes
     Route::get('/admin/carts', [AdminController::class, 'carts']);
+});
 
-    // Only send contac when login 
+
+Route::middleware(['auth'])->group(function () {
+    // Only send contact when login 
     Route::post('/contact', [ContactController::class, 'create']);
 });

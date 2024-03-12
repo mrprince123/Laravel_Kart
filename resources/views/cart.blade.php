@@ -7,6 +7,13 @@
 @section('main-section')
     <div class="bg-slate-100">
 
+        {{-- if Product already exists  --}}
+        @if (session('error'))
+            <div class="alert alert-danger text-center w-fit m-auto rounded-xl">
+                <p class="bg-white drop-shadow-xl p-2 font-medium text-yellow-400">{{ session('error') }}</p>
+            </div>
+        @endif
+
         <div class="w-2/3 m-auto pt-10 pb-10  rounded-2xl flex justify-center">
 
             @php
@@ -14,44 +21,41 @@
             @endphp
             {{-- For showing all the Products  --}}
             <div class="flex flex-col drop-shadow-2xl w-1/2">
-                @foreach ($carts as $value)
+                @foreach ($carts as $cartItem)
                     <div class="bg-white m-2 rounded-2xl">
                         @php
-                            $product = App\Models\product::find($value->product_id);
+                            $product = App\Models\product::find($cartItem->product_id);
                         @endphp
 
                         @if ($product)
                             <div class="flex p-2 gap-2">
-                                {{-- <img class="w-1/3" src="{{ $product->image }}" alt=""> --}}
                                 <img class="w-1/3 h-48 object-cover rounded-2xl"
                                     src="{{ asset('storage/' . $product->images) }}" alt="">
 
                                 <div class="flex flex-col justify-center">
                                     <h3 class="font-medium text-black text-xl">{{ $product->name }}</h3>
                                     <p class="font-normal">{{ $product->description }}</p>
-                                    <p>Price: {{ $product->price }}</p>
+                                    <p>Price: {{ $product->price * $cartItem->quantity }}</p>
                                     @php
-                                        $totalPrice = $totalPrice + $product->price;
+                                        $totalPrice = $totalPrice + $product->price * $cartItem->quantity;
                                     @endphp
-
-                                    <select class="rounded-2xl mt-2" name="" id="">
-                                        <option value="">Quantity</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                    <form action="{{ url('/cart') }}/{{ $value->id }}" method="POST">
+                                    <p class="mt-2 font-medium">Quantity:</p>
+                                    <div class="mt-1 mb-2 w-1/2 flex gap-1 justify-evenly items-center">
+                                        <form action="{{ url('cart/') }}/{{ $cartItem->id }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" name="quantity" value="{{ $cartItem->quantity - 1 }}"
+                                                class="font-bold text-xl text-center border-2 rounded-md border-slate-500 w-full">-</button>
+                                            <span class="font-medium text-xl text-center">{{ $cartItem->quantity }}</span>
+                                            <button type="submit" name="quantity" value="{{ $cartItem->quantity + 1 }}"
+                                                class="font-bold text-xl text-center border-2 rounded-md border-slate-500 w-full">+</button>
+                                        </form>
+                                    </div>
+                                    <form action="{{ url('/cart') }}/{{ $cartItem->id }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class="bg-black mt-2 rounded-2xl text-white font-medium p-2">Remove From
+                                            class="bg-black mt-2 rounded-md text-white font-medium p-2">Remove From
                                             Cart</button>
                                     </form>
                                 </div>

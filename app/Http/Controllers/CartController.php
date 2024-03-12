@@ -18,6 +18,34 @@ class CartController extends Controller
         return view('cart')->with($data);
     }
 
+    public function quantityUpdate(Request $request, $cartItemId)
+    {
+        // echo "<pre>";
+        // echo $request->quantity;
+        // echo "</pre>";
+        // echo $cartItemId;
+
+        $request ->validate([
+            'quantity'=>'required|integer|min:1'
+        ]);
+
+        // Find the cart item based on the $cartId
+        $cartItem = carts::find($cartItemId);
+
+        // echo $cartItem;
+
+        // Check if the cart item exists
+        if (!$cartItem) {
+            // Handle the case where the cart item is not found
+            return redirect()->back()->with('error', 'Cart item not found');
+        }
+
+        // Update the quantity of the cart item
+        $cartItem->quantity = $request['quantity'];
+        $cartItem->save();
+
+        return redirect()->back()->with('success', 'Quantity updated successfully');
+    }
 
 
     // Add Product to cart
@@ -41,6 +69,16 @@ class CartController extends Controller
             return response()->json(['error' => 'Product not found'], 404);
         }
 
+        // Check if the product already exists in the user's cart
+        $existingCartItem = carts::where('user_id', $userId)
+            ->where('product_id', $productId)
+            ->first();
+
+        if ($existingCartItem) {
+            // Product already exists in the cart, return a message
+            return redirect('/cart')->with('error', 'Oops!! Product already exists in the cart');
+        }
+
         // Now, you can add the product to the user's cart
         // You may have a Cart model or service to handle this logic
         // For example, assuming you have a Cart model:
@@ -50,9 +88,9 @@ class CartController extends Controller
             // You might also include other details like quantity, price, etc.
         ]);
 
-        // Optionally, you can return a response indicating that the product was added to the cart successfully
-        // return response()->json(['message' => 'Product added to cart successfully', 'cart_item' => $cartItem], 200);
-        return redirect('/cart');
+
+        // return redirect('/cart');
+        return redirect('/cart')->with('success', 'Product added to cart successfully');
     }
 
     public function removeFromCart($cartId)

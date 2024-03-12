@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('subcategory', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
+            $table->string('email');
+            $table->string('password');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_categories');
+        Schema::dropIfExists('admins');
     }
 };

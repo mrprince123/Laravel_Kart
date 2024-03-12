@@ -2,15 +2,92 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\carts;
 use App\Models\Contact;
+use App\Models\order_items;
 use App\Models\orders;
 use App\Models\product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
+
+    // Show Admin Login
+    public function showAdminLogin()
+    {
+        return view('Admin.Auth.login');
+    }
+
+    // Show Admin Register
+    public function showAdminRegister()
+    {
+        return  view('Admin.Auth.register');
+    }
+
+    // Post Admin Login Data
+    public function adminLogin(Request $request)
+    {
+
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+
+        // Retrieve the admin record based on the provided email
+        $admin = Admin::where('email', $credentials['email'])->first();
+
+        if (!$admin || !Hash::check($credentials['password'], $admin->password)) {
+            // Invalid email or password
+            return redirect()->back()->withErrors(['email' => 'Invalid email or password']);
+        }
+
+        // Passwords match, attempt to log in the admin
+        Auth::guard('admin')->login($admin);
+
+
+        // Redirect to admin dashboard
+        return redirect('/admin');
+    }
+
+    // Post Admin Register Data
+    public function adminRegister(Request $request)
+    {
+        $request->validate(
+            [
+                'name' => 'required',
+                'email' => 'required|email|unique:admins',
+                'password' => 'required'
+            ]
+        );
+
+        $admin = new Admin();
+        $admin->name = $request['name'];
+        $admin->email = $request['email'];
+        $admin->password = Hash::make($request->password);
+        // $admin->password = $request['password'];
+        $admin->save();
+
+        // Log in the newly register admin
+        Auth::guard('admin')->login($admin);
+
+        // Now Redirect to Admin
+        return redirect('/admin');
+    }
+
+    // Admin Logout
+    public function logoutAdmin()
+    {
+        Auth::guard('admin')->logout();
+        Session::flush();
+        return redirect('/admin/login');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +97,6 @@ class AdminController extends Controller
     {
         return view('Admin.admin');
     }
-
 
     public function index()
     {
@@ -131,13 +207,18 @@ class AdminController extends Controller
         return redirect('/admin/users');
     }
 
-
-
     public function orders()
     {
         $orders = orders::all();
         $data = compact('orders');
         return view('Admin.order')->with($data);
+    }
+
+    public function orderItems()
+    {
+        $ordersItems = order_items::all();
+        $data = compact('ordersItems');
+        return view('Admin.orderItems')->with($data);
     }
 
     public function carts()
@@ -146,7 +227,4 @@ class AdminController extends Controller
         $data = compact('carts');
         return view('Admin.cart')->with($data);
     }
-    
-
-    
 }

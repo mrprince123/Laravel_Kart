@@ -9,7 +9,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/bbfa8b511e.js" crossorigin="anonymous"></script>
     {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" /> --}}
-
 </head>
 
 <body>
@@ -30,15 +29,14 @@
                 <a href="{{ url('/login') }}"><button class="bg-black p-2 font-medium text-white">Login</button></a>
                 <a href="{{ url('/register') }}"><button class="bg-black p-2 font-medium text-white">Register</button></a>
             @else
-            <a href="{{ url('/cart') }}" class="font-medium m-2"><i class="fas fa-cart-plus"></i></a>
+                <a href="{{ url('/cart') }}" class="font-medium m-2"><i class="fas fa-cart-plus"></i></a>
 
                 <!-- If the user is authenticated -->
                 <form action="{{ route('logout') }}" method="GET" class="inline">
                     @csrf
                     <a href="{{ url('/profile') }}" class="font-medium m-2"><i class="far fa-user-circle"></i></a>
-                    <button type="submit" class="bg-slate-500 p-2 font-medium text-black">Logout</button>
+                    <button type="submit" class="bg-black p-2 font-medium text-white">Logout</button>
                 </form>
-                
 
             @endguest
 

@@ -27,7 +27,10 @@
                     <td class=" p-3 m-2 font-medium border-black">{{ $value->name }}</td>
                     <td class=" p-3 m-2 border-black">{{ $value->description }}</td>
                     <td class=" p-3 m-2 border-black">{{ $value->price }}</td>
-                    <td class=" p-3 m-2 border-black">{{ $value->images }}</td>
+
+                    <td class=" p-3 m-2 border-black"><img class="h-28 w-full object-cover rounded-xl"
+                            src="{{ asset('storage/' . $value->images) }}" alt="Product Images"></td>
+
                     @switch($value->cat_id)
                         @case(1)
                             <td class=" p-3 m-2 border-black">Electronic</td>

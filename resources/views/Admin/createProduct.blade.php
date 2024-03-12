@@ -39,6 +39,7 @@
             @enderror
             <label for="name" class="font-medium text-gray-500 text-lg mt-2">Product Category</label>
             <select class="p-3 border border-slate-300" name="category">
+                <option value="">Select Category</option>
                 <option value="1">Electronic</option>
                 <option value="2">Clothes</option>
                 <option value="3">Food</option>

@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'admin' => [ // Define a guard named 'admin'
+            'driver' => 'session', // You can use 'session' driver on 'token' if you prefer
+            'provider' => 'admins' // Use a different provider for admin users
+        ]
     ],
 
     /*
@@ -60,15 +65,16 @@ return [
     */
 
     'providers' => [
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
     ],
 
     /*

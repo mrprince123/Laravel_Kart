@@ -36,13 +36,16 @@
                             class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Users</a></li>
                     <li><a href="{{ url('/admin/order') }}"
                             class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Orders</a></li>
-                            <li><a href="{{ url('/admin/category') }}"
-                                class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Category</a></li>
+                    <li><a href="{{ url('/admin/ordersItem') }}"
+                            class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Orders Items</a></li>
                     <li><a href="{{ url('/admin/carts') }}"
                             class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Carts</a></li>
 
+                    <li><a href="{{ url('/admin/logout') }}"
+                            class="block py-2 px-4 hover:bg-gray-700 rounded-lg font-medium">Admin Logout</a></li>
+
                     <li><a href="{{ url('/') }}"
-                            class="block py-2 px-4 hover:bg-gray-700 font-medium rounded-lg">Navigate To
+                            class="block py-2 px-4 mt-auto hover:bg-gray-700 font-medium rounded-lg">Navigate To
                             Home</a>
                     </li>
                 </ul>

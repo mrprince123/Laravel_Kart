@@ -16,7 +16,6 @@
                 <th class=" p-2 m-2 border-black">Quantity</th>
                 <th class=" p-2 m-2 border-black">Created At</th>
                 <th class=" p-3 m-2 border-black">Actions</th>
-
             </tr>
         </thead>
         <tbody>
@@ -26,12 +25,7 @@
                     <td class="p-3 m-2 border-black">{{ $value->id }}</td>
                     <td class="p-3 m-2 border-black">{{ $value->user_id }}</td>
                     <td class="p-3 m-2 border-black">{{ $value->product_id }}</td>
-
-                    @if ($value->quantity === NULL)
-                    <td class="p-3 m-2 border-black">NULL</td>
-                    @endif
-
-                    {{-- <td class="border p-2 m-2 border-black">{{ $value->quantity }}</td> --}}
+                    <td class="p-3 m-2">{{$value->quantity}}</td>
                     <td class="p-3 m-2 border-black">{{ $value->created_at }}</td>
 
                     <td class="p-3 m-2 border-black">
