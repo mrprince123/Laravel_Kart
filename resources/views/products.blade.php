@@ -79,28 +79,32 @@
                     @php $count=0; @endphp
                     @foreach ($products as $value)
                         @if ($value->cat_id == 1)
-                            @if ($count < 5)
-                                <div class="bg-slate-100 rounded-2xl drop-shadow-2xl m-2 p-2 flex flex-col">
-                                    <img class="w-full rounded-2xl h-48 object-cover"
-                                        src="{{ asset('storage/' . $value->images) }}" alt="">
-                                    <h3 class="mt-2 font-medium">{{ $value->price }} <span
-                                            class="bg-black text-white text-sm font-medium p-1">10% off</span></h3>
-                                    <h1 class="font-medium text-lg">{{ $value->name }}</h1>
-                                    {{-- <p>{{ $value->cat_id }}</p> --}}
-                                    <p class="mb-2">{{ $value->description }}</p>
-                                    <div class="flex gap-2 w-full justify-evenly mt-auto">
-                                        <a class="w-1/2" href="{{ url('/product') }}/{{ $value->id }}"><button
-                                                class="bg-slate-400 rounded-xl w-full p-1 font-medium text-black">View
-                                                Full</button></a>
-                                        <a class="w-1/2"
-                                            href="{{ route('cart.add', ['productId' => $value->id, 'userId' => Auth::id()]) }}"><button
-                                                class="bg-black w-full rounded-lg p-1 font-medium text-white">Add To
-                                                Cart</button></a>
+                            {{-- @if ($count < 5) --}}
+                            <div class="bg-slate-100 rounded-2xl drop-shadow-2xl m-2 p-2 flex flex-col">
+                                <img class="w-full rounded-2xl h-48 object-cover"
+                                    src="{{ asset('storage/' . $value->images) }}" alt="">
 
-                                    </div>
+                                <div class="flex gap-2 mt-2 items-center">
+                                    <h3 class="mt-2 font-medium text-red-500 line-through">{{ $value->price }} </h3>
+                                    <span class="bg-black text-white w-fit text-sm font-medium p-1">10% off</span>
                                 </div>
-                                @php  $count++;  @endphp
-                            @endif
+
+                                @php $finalPrice = ($value->price - $value->price / 10); @endphp
+                                <h3 class="mt-1 font-bold text-xl text-green-500 ">₹{{ $finalPrice }}</h3>
+                                <h1 class="font-medium text-lg">{{ $value->name }}</h1>
+                                <p class="mb-2">{{ $value->description }}</p>
+                                <div class="flex gap-2 w-full justify-evenly mt-auto">
+                                    <a class="w-1/2" href="{{ url('/product') }}/{{ $value->id }}"><button
+                                            class="bg-slate-400 rounded-xl w-full p-1 font-medium text-black">View
+                                            Full</button></a>
+                                    <a class="w-1/2"
+                                        href="{{ route('cart.add', ['productId' => $value->id, 'userId' => Auth::id()]) }}"><button
+                                            class="bg-black w-full rounded-lg p-1 font-medium text-white">Add To
+                                            Cart</button></a>
+                                </div>
+                            </div>
+                            @php  $count++;  @endphp
+                            {{-- @endif --}}
                         @endif
                     @endforeach
                 </div>
@@ -117,9 +121,16 @@
                                 <div class="bg-slate-100 rounded-2xl drop-shadow-2xl m-2 p-2 flex flex-col">
                                     <img class="w-full rounded-2xl h-48 object-cover"
                                         src="{{ asset('storage/' . $value->images) }}" alt="">
-                                    <h3 class="mt-2 font-medium">{{ $value->price }} <span
-                                            class="bg-black text-white text-sm font-medium p-1">10% off</span></h3>
-                                    <h1 class="font-medium text-lg">{{ $value->name }}</h1>
+
+
+
+                                    <div class="flex gap-2 mt-2 items-center">
+                                        <h3 class="mt-2 font-medium text-red-500 line-through">{{ $value->price }} </h3>
+                                        <span class="bg-black text-white w-fit text-sm font-medium p-1">10% off</span>
+                                    </div>
+
+                                    @php $finalPrice = ($value->price - $value->price / 10); @endphp
+                                    <h3 class="mt-1 font-bold text-xl text-green-500 ">₹{{ $finalPrice }}</h3>
                                     {{-- <p>{{ $value->cat_id }}</p> --}}
                                     <p class="mb-2">{{ $value->description }}</p>
                                     <div class="flex gap-2 w-full justify-evenly mt-auto">
@@ -151,9 +162,15 @@
                                 <div class="bg-slate-100 rounded-2xl drop-shadow-2xl m-2 p-2 flex flex-col">
                                     <img class="w-full rounded-2xl h-48 object-cover"
                                         src="{{ asset('storage/' . $value->images) }}" alt="">
-                                    <h3 class="mt-2 font-medium">{{ $value->price }} <span
-                                            class="bg-black text-white text-sm font-medium p-1">10% off</span></h3>
-                                    <h1 class="font-medium text-lg">{{ $value->name }}</h1>
+
+
+                                    <div class="flex gap-2 mt-2 items-center">
+                                        <h3 class="mt-2 font-medium text-red-500 line-through">{{ $value->price }} </h3>
+                                        <span class="bg-black text-white w-fit text-sm font-medium p-1">10% off</span>
+                                    </div>
+
+                                    @php $finalPrice = ($value->price - $value->price / 10); @endphp
+                                    <h3 class="mt-1 font-bold text-xl text-green-500 ">₹{{ $finalPrice }}</h3>
                                     {{-- <p>{{ $value->cat_id }}</p> --}}
                                     <p class="mb-2">{{ $value->description }}</p>
                                     <div class="flex gap-2 w-full justify-evenly mt-auto">
@@ -185,9 +202,15 @@
                                 <div class="bg-slate-100 rounded-2xl drop-shadow-2xl m-2 p-2 flex flex-col">
                                     <img class="w-full rounded-2xl h-48 object-cover"
                                         src="{{ asset('storage/' . $value->images) }}" alt="">
-                                    <h3 class="mt-2 font-medium">{{ $value->price }} <span
-                                            class="bg-black text-white text-sm font-medium p-1">10% off</span></h3>
-                                    <h1 class="font-medium text-lg">{{ $value->name }}</h1>
+
+
+                                    <div class="flex gap-2 mt-2 items-center">
+                                        <h3 class="mt-2 font-medium text-red-500 line-through">{{ $value->price }} </h3>
+                                        <span class="bg-black text-white w-fit text-sm font-medium p-1">10% off</span>
+                                    </div>
+
+                                    @php $finalPrice = ($value->price - $value->price / 10); @endphp
+                                    <h3 class="mt-1 font-bold text-xl text-green-500 ">₹{{ $finalPrice }}</h3>
                                     {{-- <p>{{ $value->cat_id }}</p> --}}
                                     <p class="mb-2">{{ $value->description }}</p>
                                     <div class="flex gap-2 w-full justify-evenly mt-auto">
@@ -219,9 +242,15 @@
                                 <div class="bg-slate-100 rounded-2xl drop-shadow-2xl m-2 p-2 flex flex-col">
                                     <img class="w-full rounded-2xl h-48 object-cover"
                                         src="{{ asset('storage/' . $value->images) }}" alt="">
-                                    <h3 class="mt-2 font-medium">{{ $value->price }} <span
-                                            class="bg-black text-white text-sm font-medium p-1">10% off</span></h3>
-                                    <h1 class="font-medium text-lg">{{ $value->name }}</h1>
+
+
+                                    <div class="flex gap-2 mt-2 items-center">
+                                        <h3 class="mt-2 font-medium text-red-500 line-through">{{ $value->price }} </h3>
+                                        <span class="bg-black text-white w-fit text-sm font-medium p-1">10% off</span>
+                                    </div>
+
+                                    @php $finalPrice = ($value->price - $value->price / 10); @endphp
+                                    <h3 class="mt-1 font-bold text-xl text-green-500 ">₹{{ $finalPrice }}</h3>
                                     {{-- <p>{{ $value->cat_id }}</p> --}}
                                     <p class="mb-2">{{ $value->description }}</p>
                                     <div class="flex gap-2 w-full justify-evenly mt-auto">
@@ -253,9 +282,15 @@
                                 <div class="bg-slate-100 rounded-2xl drop-shadow-2xl m-2 p-2 flex flex-col">
                                     <img class="w-full rounded-2xl h-48 object-cover"
                                         src="{{ asset('storage/' . $value->images) }}" alt="">
-                                    <h3 class="mt-2 font-medium">{{ $value->price }} <span
-                                            class="bg-black text-white text-sm font-medium p-1">10% off</span></h3>
-                                    <h1 class="font-medium text-lg">{{ $value->name }}</h1>
+
+
+                                    <div class="flex gap-2 mt-2 items-center">
+                                        <h3 class="mt-2 font-medium text-red-500 line-through">{{ $value->price }} </h3>
+                                        <span class="bg-black text-white w-fit text-sm font-medium p-1">10% off</span>
+                                    </div>
+
+                                    @php $finalPrice = ($value->price - $value->price / 10); @endphp
+                                    <h3 class="mt-1 font-bold text-xl text-green-500 ">₹{{ $finalPrice }}</h3>
                                     {{-- <p>{{ $value->cat_id }}</p> --}}
                                     <p class="mb-2">{{ $value->description }}</p>
                                     <div class="flex gap-2 w-full justify-evenly mt-auto">

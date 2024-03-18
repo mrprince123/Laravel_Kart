@@ -10,15 +10,14 @@
     <div class="bg-slate-100 pt-20 pb-20">
 
         <div class="w-2/3 flex m-auto drop-shadow-2xl rounded-2xl bg-white gap-4 p-4">
-           
+
             <div class="w-2/5">
                 <img class="rounded-2xl" src="{{ asset('storage/' . $products->images) }}" alt="">
 
                 <div class="flex gap-2 mt-5 w-full">
-                    <a href="" class="w-1/2"><button class="bg-slate-400 p-3 w-full font-medium text-black">Buy
-                            Now</button></a>
+
                     {{-- <a href=""><button class="bg-black p-1 font-medium text-white">Add To Cart</button></a> --}}
-                    <a class="w-1/2"
+                    <a class="w-full"
                         href="{{ route('cart.add', ['productId' => $products->id, 'userId' => Auth::id()]) }}"><button
                             class="bg-black p-3 w-full font-medium text-white">Add To Cart</button></a>
                 </div>
@@ -30,16 +29,19 @@
             <div class="w-3/5">
                 <h1 class="font-medium text-lg">{{ $products->name }}</h1>
                 <p>Description: {{ $products->description }}</p>
-                <p class="font-medium text-green-500">Special Price</p>
-                <p class="text-2xl font-medium">₹{{ $products->price }}</p>
-
+                <p class="text-2xl font-medium text-red-500 line-through">₹{{ $products->price }}</p>
+                <p class="bg-black p-2 text-white text-sm font-medium w-fit">10% off</p>
+                <p class="font-medium text-green-500 mt-2">Special Discounted Price</p>
+                @php $finalDiscountedPrice = 0; @endphp
+                <p class="text-2xl font-medium">₹{{ $finalDiscountedPrice = $products->price - $products->price / 10 }}
+                </p>
 
                 <div class="mt-10">
                     <h2 class="font-medium text-lg">Available Offers</h2>
                     <ul>
-                        <li><span class="font-medium">Bank Offer </span> ₹25* instant discount for the 1st Flipkart Order
+                        <li><span class="font-medium">Bank Offer </span> 10% instant discount for the 1st Laravelkart Order
                             using
-                            Flipkart UPI</li>
+                            Cash on Delivery</li>
                         <li><span class="font-medium">Bank Offer </span> 5% Cashback on Flipkart Axis Bank Card</li>
                         <li><span class="font-medium">Special Offer </span> Get extra 30% off (price inclusive of
                             cashback/coupon)

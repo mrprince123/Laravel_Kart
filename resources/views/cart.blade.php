@@ -40,8 +40,9 @@
                                         $totalPrice = $totalPrice + $product->price * $cartItem->quantity;
                                     @endphp
                                     <p class="mt-2 font-medium">Quantity:</p>
-                                    <div class="mt-1 mb-2 w-1/2 flex gap-1 justify-evenly items-center">
-                                        <form action="{{ url('cart/') }}/{{ $cartItem->id }}" method="POST">
+                                    <div class="mt-1 mb-2 w-1/2 ">
+                                        <form class="flex gap-1 justify-evenly items-center"
+                                            action="{{ url('cart/') }}/{{ $cartItem->id }}" method="POST">
                                             @csrf
                                             @method('PUT')
                                             <button type="submit" name="quantity" value="{{ $cartItem->quantity - 1 }}"

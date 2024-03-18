@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
             $table->enum('payment_method', ['cod', 'online'])->default('cod');
             $table->enum('order_status', ['pending', 'completed', 'cancelled'])->default('pending');
-            $table->enum('payment_status', ['unpain', 'paid'])->nullable();
+            $table->enum('payment_status', ['unpaid', 'paid'])->nullable()->default('unpaid');
             $table->timestamps();
         });
     }

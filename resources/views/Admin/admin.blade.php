@@ -36,6 +36,8 @@
                             class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Users</a></li>
                     <li><a href="{{ url('/admin/order') }}"
                             class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Orders</a></li>
+                    <li><a href="{{ url('/admin/address') }}"
+                            class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Address</a></li>
                     <li><a href="{{ url('/admin/ordersItem') }}"
                             class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Orders Items</a></li>
                     <li><a href="{{ url('/admin/carts') }}"

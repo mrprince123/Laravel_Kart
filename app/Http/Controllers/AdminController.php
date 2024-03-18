@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Admin;
 use App\Models\carts;
 use App\Models\Contact;
@@ -221,10 +222,37 @@ class AdminController extends Controller
         return view('Admin.orderItems')->with($data);
     }
 
+    public function deleteOrders($id){
+        $order = orders::find($id);
+        if(!is_null($order)){
+            $order->delete();
+        }
+
+        return redirect('/admin/order');
+
+    }
+
     public function carts()
     {
         $carts = carts::all();
         $data = compact('carts');
         return view('Admin.cart')->with($data);
+    }
+
+    public function address()
+    {
+        $address = Address::all();
+        $data = compact('address');
+        return view('Admin.address')->with($data);
+    }
+
+    public function addressDelete($id)
+    {
+        $address = Address::find($id);
+        if (!is_null($address)) {
+            $address->delete();
+        }
+
+        return redirect('/admin/address');
     }
 }

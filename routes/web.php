@@ -79,6 +79,7 @@ Route::middleware(['admin.auth'])->group(function () {
     // Admin Orders Routes
     Route::get('/admin/order', [AdminController::class, 'orders'])->name('order');
     Route::get('/admin/ordersItem', [AdminController::class, 'orderItems']);
+    Route::get('/admin/order/delete/{id}', [AdminController::class, 'deleteOrders'])->name('deleteOrders');
 
     // Admin Product Routes
     Route::post('/admin/product', [AdminController::class, 'createProduct']);
@@ -86,6 +87,11 @@ Route::middleware(['admin.auth'])->group(function () {
 
     // Admin Carts Routes
     Route::get('/admin/carts', [AdminController::class, 'carts']);
+
+    // Admin Address Routes
+    Route::get('/admin/address', [AdminController::class, 'address']);
+    Route::get('/admin/address/{id}', [AdminController::class, 'addressDelete'])->name('deleteAddress');
+
 });
 
 

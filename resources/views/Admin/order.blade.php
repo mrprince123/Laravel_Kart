@@ -33,7 +33,7 @@
                     <td class=" p-3 m-2 border-black">{{ $value->created_at }}</td>
                     <th>
                         <button class="bg-blue-500 rounded-lg text-white font-bold p-2">Edit</button>
-                        <a href="{{ route('deleteProduct', ['id' => $value->id]) }}">
+                        <a href="{{ route('deleteOrders', ['id' => $value->id]) }}">
                             <button class="bg-red-500 rounded-lg text-white font-bold p-2">Delete</button>
                         </a>
                     </th>

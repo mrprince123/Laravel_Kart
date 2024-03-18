@@ -8,6 +8,7 @@ use App\Models\order_items;
 use App\Models\orders;
 use App\Models\product;
 use Illuminate\Support\Facades\Auth;
+use Razorpay\Api\Api;
 
 class CheckoutController extends Controller
 {
@@ -30,6 +31,7 @@ class CheckoutController extends Controller
     public function finalCheckout(Request $request)
     {
         $userId = Auth::id();
+
         // Validate incoming request data
         $validatedData = $request->validate([
             'total_amount' => 'required|numeric|min:0',
@@ -60,6 +62,19 @@ class CheckoutController extends Controller
             $orderItem->price = $product->price; // You may need to adjust this depending on your cart item structure
             $orderItem->save();
         }
+
+        // $api = new Api(config('services.razorpay.key'), config('services.razorpay.secret'));
+        // $razorpayOrder = $api->order->create([
+        //     'receipt'=>'order_receipt_id',
+        //     'amount'=>$validatedData['total_amount'] * 100, // amount in paisa
+        //     'currency'=>'INR',
+        //     'payment_capture'=>1 // auto capture
+        // ]);
+
+        // $order->razorpay_order_id = $razorpayOrder->id;
+        // $order->save();
+
+        // return redirect()->route('razorpay.payment', ['orderId'=> $razorpayOrder->id]);
 
         return redirect('/orders');
     }
