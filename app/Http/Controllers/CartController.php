@@ -20,11 +20,7 @@ class CartController extends Controller
 
     public function quantityUpdate(Request $request, $cartItemId)
     {
-        // echo "<pre>";
-        // echo $request->quantity;
-        // echo "</pre>";
-        // echo $cartItemId;
-
+    
         $request ->validate([
             'quantity'=>'required|integer|min:1'
         ]);
@@ -32,7 +28,6 @@ class CartController extends Controller
         // Find the cart item based on the $cartId
         $cartItem = carts::find($cartItemId);
 
-        // echo $cartItem;
 
         // Check if the cart item exists
         if (!$cartItem) {

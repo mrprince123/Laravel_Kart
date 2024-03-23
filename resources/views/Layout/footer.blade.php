@@ -13,7 +13,7 @@
     </div>
 </footer>
 <div class="text-white flex items-center justify-between bg-black">
-    <p>Copyright &copy; 2024 | <span class="text-sky-300">Laraval Kart</span></p>
+    <p>Copyright &copy; 2024 | <span class="text-sky-300 font-medium">Laraval Kart</span></p>
     <div class="flex">
         <a href="{{ url('/') }}" class="m-2">Home</a>
         <a href="{{ url('/about') }}" class="m-2">About</a>

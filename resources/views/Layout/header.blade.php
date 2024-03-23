@@ -26,8 +26,8 @@
             <a href="{{ url('/product') }}" class="font-medium m-2">Products</a>
 
             @guest <!-- If the user is not authenticated -->
-                <a href="{{ url('/login') }}"><button class="bg-black p-2 font-medium text-white">Login</button></a>
-                <a href="{{ url('/register') }}"><button class="bg-black p-2 font-medium text-white">Register</button></a>
+                <a href="{{ url('/login') }}"><button class="bg-black rounded-lg p-2 font-medium text-white">Login</button></a>
+                <a href="{{ url('/register') }}"><button class="bg-black rounded-lg p-2 font-medium text-white">Register</button></a>
             @else
                 <a href="{{ url('/cart') }}" class="font-medium m-2"><i class="fas fa-cart-plus"></i></a>
 
@@ -35,7 +35,7 @@
                 <form action="{{ route('logout') }}" method="GET" class="inline">
                     @csrf
                     <a href="{{ url('/profile') }}" class="font-medium m-2"><i class="far fa-user-circle"></i></a>
-                    <button type="submit" class="bg-black p-2 font-medium text-white">Logout</button>
+                    <button type="submit" class="bg-black rounded-lg p-2 font-medium text-white">Logout</button>
                 </form>
 
             @endguest

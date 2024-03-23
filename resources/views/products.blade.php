@@ -83,7 +83,7 @@
                             <div class="bg-slate-100 rounded-2xl drop-shadow-2xl m-2 p-2 flex flex-col">
                                 <img class="w-full rounded-2xl h-48 object-cover"
                                     src="{{ asset('storage/' . $value->images) }}" alt="">
-
+                                    {{$value->images}}
                                 <div class="flex gap-2 mt-2 items-center">
                                     <h3 class="mt-2 font-medium text-red-500 line-through">{{ $value->price }} </h3>
                                     <span class="bg-black text-white w-fit text-sm font-medium p-1">10% off</span>

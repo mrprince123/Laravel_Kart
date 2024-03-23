@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->decimal('phone', 10, 2);
+            $table->string('phone');
             $table->string('address');
             $table->string('state');
             $table->integer('pincode');
